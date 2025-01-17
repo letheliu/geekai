@@ -44,6 +44,7 @@ export function getSystemInfo() {
     }
     return new Promise((resolve, reject) => {
         httpGet('/api/config/get?key=system').then(res => {
+            console.log("=======", res)
             item.data = res
             item.expire = Date.now() + 1000 * 30
             Storage.set(systemInfoKey, item)

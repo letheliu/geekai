@@ -4,9 +4,9 @@
     <div class="main">
       <div class="contain">
         <div class="logo">
-          <el-image :src="logo" fit="cover" @click="router.push('/')"/>
+          <el-image src="/images/logo.png" fit="cover" @click="router.push('/')"/>
         </div>
-        <div class="header">{{ title }}</div>
+        <div class="header"></div>
         <div class="content">
           <div class="block">
             <el-input placeholder="账号" size="large" v-model="username" autocomplete="off" autofocus
@@ -110,7 +110,7 @@ onMounted(() => {
     if (isMobile()) {
       router.push('/mobile')
     } else {
-      router.push('/chat')
+      router.push('/social')
     }
   }).catch(() => {
   })
@@ -153,11 +153,12 @@ const doLogin = (verifyData) => {
     x: verifyData.x
   }).then((res) => {
     setUserToken(res.data.token)
-    if (isMobile()) {
-      router.push('/mobile')
-    } else {
-      router.push('/chat')
-    }
+    router.push('/main');
+    // if (isMobile()) {
+    //   router.push('/mobile')
+    // } else {
+    //   router.push('/chat')
+    // }
 
   }).catch((e) => {
     showMessageError('登录失败，' + e.message)

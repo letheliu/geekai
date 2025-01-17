@@ -2,14 +2,14 @@
   <div class="page-images-wall">
     <div class="inner custom-scroll">
       <div class="header">
-        <h2>AI 绘画作品墙</h2>
-        <div class="settings">
+        <!-- <h2>AI 绘画作品墙</h2> -->
+        <!-- <div class="settings">
           <el-radio-group v-model="imgType" @change="changeImgType">
             <el-radio label="mj" size="large">MidJourney</el-radio>
             <el-radio label="sd" size="large">Stable Diffusion</el-radio>
             <el-radio label="dall" size="large">DALL-E</el-radio>
           </el-radio-group>
-        </div>
+        </div> -->
       </div>
       <div class="waterfall" :style="{ height:listBoxHeight + 'px' }" id="waterfall-box">
         <v3-waterfall v-if="imgType === 'mj'"
@@ -116,6 +116,17 @@
                 >
                   <el-icon class="copy-prompt-wall" :data-clipboard-text="slotProp.item.prompt">
                     <DocumentCopy/>
+                  </el-icon>
+                </el-tooltip>
+
+                <el-tooltip
+                    class="box-item"
+                    effect="light"
+                    content="添加到收藏"
+                    placement="top"
+                >
+                  <el-icon @click="addToLike">
+                    <Star/>
                   </el-icon>
                 </el-tooltip>
               </div>
@@ -299,12 +310,16 @@
 
 <script setup>
 import {nextTick, onMounted, onUnmounted, ref} from "vue"
-import {DocumentCopy, Picture} from "@element-plus/icons-vue";
+import {DocumentCopy, Picture, Star} from "@element-plus/icons-vue";
 import {httpGet} from "@/utils/http";
 import {ElMessage} from "element-plus";
 import Clipboard from "clipboard";
 import {useRouter} from "vue-router";
 import BackTop from "@/components/BackTop.vue";
+
+const addToLike = ()=>{
+  ElMessage.success("收藏成功");
+}
 
 const data = ref({
   "mj": [],
@@ -335,6 +350,8 @@ const page = ref(0)
 const pageSize = ref(15)
 // 获取下一页数据
 const getNext = () => {
+  imgType.value = "dall"
+
   if (isOver.value) {
     return
   }

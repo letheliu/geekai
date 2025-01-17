@@ -11,8 +11,14 @@ const routes = [
     {
         name: 'Index',
         path: '/',
-        meta: {title: "首页"},
+        meta: {title: "Zoomer-首页"},
         component: () => import('@/views/Index.vue'),
+    },
+    {
+        name: 'WxLogin',
+        path: '/wxLogin',
+        meta: {title: "Zoomer-微信登陆"},
+        component: () => import('@/views/WxLogin.vue'),
     },
     {
         name: 'home',
@@ -20,6 +26,30 @@ const routes = [
         redirect: '/chat',
         component: () => import('@/views/Home.vue'),
         children: [
+            {
+                name: "main",
+                path: '/main',
+                meta: {title: 'zoomer创作中心'},
+                component: () => import('@/views/main.vue'),
+            },
+            {
+                name: "social",
+                path: '/social',
+                meta: {title: 'zoomer社区'},
+                component: () => import('@/views/social.vue'),
+            },
+            {
+                name: "lora",
+                path: '/lora',
+                meta: {title: '风格lora'},
+                component: () => import('@/views/lora.vue'),
+            },
+            {
+                name: "like",
+                path: '/like',
+                meta: {title: '我的收藏'},
+                component: () => import('@/views/like.vue'),
+            },
             {
                 name: 'chat',
                 path: '/chat',

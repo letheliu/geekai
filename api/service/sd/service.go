@@ -16,8 +16,9 @@ import (
 	"geekai/store"
 	"geekai/store/model"
 	"geekai/utils"
-	"github.com/go-redis/redis/v8"
 	"time"
+
+	"github.com/go-redis/redis/v8"
 
 	"github.com/imroc/req/v3"
 	"gorm.io/gorm"
@@ -164,6 +165,7 @@ func (s *Service) Txt2Img(task types.SdTask) error {
 	}
 
 	apiURL := fmt.Sprintf("%s/sdapi/v1/txt2img", apiKey.ApiURL)
+	logger.Info(apiURL)
 	logger.Debugf("send image request to %s", apiURL)
 	// send a request to sd api endpoint
 	go func() {

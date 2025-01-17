@@ -24,7 +24,7 @@
                 --el-table-header-bg-color:#474E5C;
                 --el-table-text-color:#d1d1d1">
             <el-table-column prop="username" label="用户" width="130px"/>
-            <el-table-column prop="model" label="模型" width="130px"/>
+            <!-- <el-table-column prop="model" label="模型" width="130px"/> -->
             <el-table-column prop="type" label="类型">
               <template #default="scope">
                 <el-tag size="small" :type="tagColors[scope.row.type]">{{ scope.row.type_str }}</el-tag>

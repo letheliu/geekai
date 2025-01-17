@@ -3,7 +3,7 @@
     <div class="page-dall">
       <div class="inner custom-scroll">
         <div class="sd-box">
-          <h2>DALL-E 创作中心</h2>
+          <h2>局部重绘</h2>
 
           <div class="sd-params">
             <el-form :model="params" label-width="80px" label-position="left">

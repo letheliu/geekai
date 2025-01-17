@@ -33,7 +33,7 @@ const props = defineProps({
 // 获取系统配置
 getSystemInfo().then(res => {
   title.value = res.data.title??process.env.VUE_APP_TITLE
-  copyRight.value = res.data.copyright?res.data.copyright:'极客学长 © 2023 - '+new Date().getFullYear()+' All rights reserved.'
+  copyRight.value = 'Zoomer © 2024 - '+ (new Date().getFullYear()) +' All rights reserved.'
 }).catch(e => {
   showMessageError("获取系统配置失败：" + e.message)
 })
